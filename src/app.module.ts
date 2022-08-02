@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from './modules/auth/auth.module';
@@ -22,12 +21,12 @@ import { SharedModule } from './shared/shared.module';
         configService.postgresConfig,
       inject: [ApiConfigService],
     }),
-    MongooseModule.forRootAsync({
-      imports: [SharedModule],
-      useFactory: (configService: ApiConfigService) =>
-        configService.mongoConfig,
-      inject: [ApiConfigService],
-    }),
+    // MongooseModule.forRootAsync({
+    //   imports: [SharedModule],
+    //   useFactory: (configService: ApiConfigService) =>
+    //     configService.mongoConfig,
+    //   inject: [ApiConfigService],
+    // }),
     AuthModule,
     BoardModule,
     EventsModule,
