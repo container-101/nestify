@@ -1,7 +1,9 @@
+import { Point } from 'geojson';
 import {
   BaseEntity,
   Column,
   Entity,
+  Index,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -19,15 +21,32 @@ export class ChatroomEntity extends BaseEntity {
   @Column()
   title: string;
 
+  @Column()
+  author: string;
+
+  @Column()
+  author_profile_image: string;
+
   @Column({
-    type: 'float8',
+    type: 'double precision',
+    name: 'd_lat',
   })
   latitude: number;
 
   @Column({
-    type: 'float8',
+    type: 'double precision',
+    name: 'd_long',
   })
   longitude: number;
+
+  @Index({ spatial: true })
+  @Column({
+    type: 'geography',
+    spatialFeatureType: 'Point',
+    srid: 4326,
+    nullable: true,
+  })
+  location: Point;
 
   @OneToOne(() => UserEntity, (user) => user.chatroom, {
     createForeignKeyConstraints: false,

@@ -39,6 +39,7 @@ export class AuthController {
     return {
       email: user.email,
       username: user.username,
+      profile_image: user.profile_image,
     };
   }
 

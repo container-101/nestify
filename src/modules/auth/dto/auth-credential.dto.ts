@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
@@ -17,6 +18,10 @@ export class AuthCredentialDto {
   @MinLength(4, { message: 'username must be at least 4 characters' })
   @MaxLength(20, { message: 'username must be at most 20 characters' })
   username: string;
+
+  @IsString()
+  @IsOptional()
+  profileImage: string;
 
   @IsString()
   @IsNotEmpty()

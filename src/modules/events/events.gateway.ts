@@ -27,6 +27,32 @@ export class EventsGateway
     this.server.emit('msgToClient', payload);
   }
 
+  //   socket.on("join-room", (roomId, peerId) => {
+  //     console.log("someone joined room", roomId, peerId);
+  //     socket.join(roomId);
+  //     socket.broadcast.to(roomId).emit("user-connected", peerId);
+  //   });
+  //
+  //   socket.on("leave-room", (leavedPeerId, roomId) => {
+  //     console.log("someone left room", leavedPeerId, roomId);
+  //     socket.leave(roomId);
+  //     socket.broadcast.to(roomId).emit("leave-room", leavedPeerId);
+  //   });
+  //
+  //   // socket.emit("me", socket.id);
+  //
+  //   // socket.on("disconnect", () => {
+  //   //   socket.broadcast.emit("callended");
+  //   // });
+  //
+  //   // socket.on("calluser", ({ userToCall, signalData, from, name }) => {
+  //   //   io.to(userToCall).emit("calluser", { signal: signalData, from, name });
+  //   // });
+  //
+  //   // socket.on("answercall", (data) => {
+  //   //   io.to(data.to).emit("callaccepted", data.signal);
+  //   // });
+
   afterInit() {
     EventsGateway.logger.debug('Socket Server Init Complete');
   }

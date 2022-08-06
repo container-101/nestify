@@ -28,6 +28,9 @@ export class UserEntity extends BaseEntity {
   @Column()
   password: string;
 
+  @Column()
+  profile_image: string;
+
   @OneToMany(() => BoardEntity, (board) => board.user, { eager: true })
   boards: BoardEntity[];
 
@@ -37,5 +40,5 @@ export class UserEntity extends BaseEntity {
     createForeignKeyConstraints: false,
   })
   @JoinColumn({ name: 'chatroom_id' })
-  chatroom!: ChatroomEntity | null;
+  chatroom: ChatroomEntity | null;
 }

@@ -9,7 +9,7 @@ import { UserEntity } from './user.entity';
 @EntityRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
   async createUser(authCredentialsDto: AuthCredentialDto): Promise<void> {
-    const { username, email, password } = authCredentialsDto;
+    const { username, email, password, profileImage } = authCredentialsDto;
 
     const salt = await genSalt();
     const hashedPassword = await hash(password, salt);
@@ -18,6 +18,7 @@ export class UserRepository extends Repository<UserEntity> {
       username,
       email,
       password: hashedPassword,
+      profile_image: profileImage || '',
     });
 
     try {
